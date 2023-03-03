@@ -1,24 +1,23 @@
-import { Search } from "./components";
+import { Search, Note } from "./components";
 
 import "./App.css";
 
 const App = () => {
 	return (
 		<div className="App">
-			<div className="container">
-				<Search />
+			<aside className="sidebar">Sidebar</aside>
 
-				<main className="Main">
+			<main className="Main">
+				<div className="container">
+					<Search />
 					<section className="favorites hidden">
 						<h2 className="favorites__title">Favorites</h2>
 						<div className="favorites__body"></div>
 					</section>
 
-					<section className="notes">All Notes</section>
-				</main>
-			</div>
-
-			<aside className="sidebar"></aside>
+					<section className="notes"></section>
+				</div>
+			</main>
 		</div>
 	);
 };
