@@ -25,4 +25,5 @@ ion-icon[name="search-outline"] {
 
 .SearchInput::placeholder {
 	color: var(--gray-color);
+	letter-spacing: 1.6px;
 }
