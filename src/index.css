@@ -10,6 +10,7 @@
 	--cyan-color: #dff1ff;
 	--yellow-color: #ffe600;
 	--gray-color: #505050;
+	--black-color: #111;
 	--background-color: #f3f3f3;
 	--foreground-color: #e6e6e6;
 	--favorites-text-color: #cdb903;
@@ -52,6 +53,7 @@ a {
 
 .container {
 	max-width: 1300px !important;
+	width: 100%;
 	margin: 0 auto !important;
 	padding: 0.2em !important;
 }
