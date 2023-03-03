@@ -1,0 +1,118 @@
+.note {
+	position: relative;
+	width: calc(25% - 2em);
+	height: 100%;
+	padding: 2em;
+	margin: 1em 1em;
+	background-color: var(--primary-color);
+	border-radius: 45px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.note.favorite {
+}
+
+.note.favorite::before {
+	content: " ";
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: -15px;
+	left: -15px;
+	background-color: var(--foreground-color);
+	border-radius: 100%;
+}
+
+.note__star-btn {
+	position: absolute;
+	display: none;
+	top: -10px;
+	left: -10px;
+	justify-content: center;
+	align-content: center;
+	padding: 0.7em;
+	font-size: 1em;
+	background-color: var(--black-color);
+	border-radius: 100%;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease-in;
+}
+
+.note__star-btn:hover {
+	background-color: var(--yellow-color);
+}
+
+.note__star-btn > ion-icon {
+	color: var(--yellow-color);
+	transition: all 0.3s ease-in;
+}
+
+.note__star-btn:hover > ion-icon {
+	color: var(--black-color);
+}
+
+.note.favorite > .note__star-btn {
+	display: flex;
+}
+
+.note:hover > .note__edit-btn {
+	opacity: 1;
+	pointer-events: all;
+	user-select: auto;
+	visibility: visible;
+}
+
+.note__body {
+	width: 100%;
+	font-size: 0.9em;
+	font-weight: 500;
+	color: #fff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	line-clamp: 4;
+	-webkit-box-orient: vertical;
+	margin-bottom: 2em;
+}
+
+.note__date {
+	margin-top: 2em;
+	font-size: 0.9em;
+	color: #ffffffbe;
+	user-select: none;
+	pointer-events: none;
+}
+
+.note__edit-btn {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	padding: 0.52em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 22px;
+	border-radius: 100%;
+	color: #fff;
+	background-color: var(--black-color);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	transition: all 0.2s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
+	user-select: none;
+	visibility: hidden;
+}
+
+@media screen and (max-width: 1365px) {
+	.note {
+		width: calc(50% - 2em);
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.note {
+		width: 100%;
+	}
+}
