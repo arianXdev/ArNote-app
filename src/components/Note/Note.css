@@ -1,7 +1,6 @@
 .note {
 	position: relative;
 	width: calc(25% - 2em);
-	height: 100%;
 	padding: 2em;
 	margin: 1em 1em;
 	background-color: var(--primary-color);
