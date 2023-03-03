@@ -5,7 +5,7 @@ import "./App.css";
 const App = () => {
 	return (
 		<div className="App">
-			<aside className="sidebar">Sidebar</aside>
+			<aside className="sidebar"></aside>
 
 			<main className="Main">
 				<div className="container">
@@ -18,6 +18,10 @@ const App = () => {
 					<section className="notes"></section>
 				</div>
 			</main>
+
+			<button className="add">
+				<ion-icon name="add"></ion-icon>
+			</button>
 		</div>
 	);
 };
