@@ -1,2 +1,28 @@
 .Search {
+	width: 100%;
+	font-size: 20px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 0.3em;
+	margin-bottom: 0.2em;
+}
+
+ion-icon[name="search-outline"] {
+	margin: 0.2em;
+	font-size: 1.1em;
+	color: var(--gray-color) !important;
+}
+
+.SearchInput {
+	width: 100%;
+	font-size: 0.85em;
+	padding: 1em 3em 1em 0;
+	color: var(--gray-color);
+	font-weight: 500;
+	background-color: var(--background-color);
+}
+
+.SearchInput::placeholder {
+	color: var(--gray-color);
 }
