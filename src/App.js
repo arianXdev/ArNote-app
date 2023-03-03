@@ -5,7 +5,9 @@ import "./App.css";
 const App = () => {
 	return (
 		<main className="app">
-			<Search />
+			<div className="container">
+				<Search />
+			</div>
 		</main>
 	);
 };
