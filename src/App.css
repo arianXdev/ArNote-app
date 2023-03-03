@@ -1,3 +1,10 @@
+.Main {
+	font-size: 16px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .sidebar {
 	position: fixed;
 	top: 0;
@@ -7,4 +14,35 @@
 	box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
 	border-top-right-radius: 4vw;
 	border-bottom-right-radius: 4vw;
+}
+
+.favorites {
+	position: relative;
+	width: 1350px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 1.5em;
+	margin: 1.1em 0;
+	border-radius: 50px;
+	background-color: var(--foreground-color);
+}
+
+.favorites.hidden {
+	display: none;
+}
+
+.favorites__title {
+	position: absolute;
+	top: -15px;
+	left: 37px;
+	font-weight: 900;
+	font-size: 1.9em;
+	color: var(--favorites-text-color);
+	letter-spacing: 1.3px;
+}
+
+.notes {
+	align-self: flex-start;
 }
