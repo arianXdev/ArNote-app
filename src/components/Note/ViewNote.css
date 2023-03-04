@@ -1,0 +1,90 @@
+.view {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: all 0.4s ease-in;
+	font-size: 16px;
+	line-height: 1.8;
+}
+
+.bg-blur {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 4;
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	background-color: #5252524d;
+	transition: all 0.4s ease-in;
+}
+
+.view__box {
+	position: relative;
+	width: 55%;
+	height: 70%;
+	padding: 2.1em;
+	background-color: var(--foreground-color);
+	border-radius: 50px;
+	box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.view__body {
+	width: 100%;
+	height: 100%;
+	font: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	resize: none;
+}
+
+.view__body::-webkit-scrollbar {
+	width: 0.13em;
+	border-radius: 50px;
+}
+
+.view__body::-webkit-scrollbar-track {
+	display: none;
+}
+
+.view__body::-webkit-scrollbar-thumb {
+	background-color: var(--primary-color);
+	outline: 1px solid var(--primary-color);
+	border-radius: 50px;
+}
+
+.view__btn {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5em 2em;
+	font-size: 1em;
+	color: #fff;
+	background-color: var(--primary-color);
+	border-radius: 100px;
+	box-shadow: 0 0 1px 3px rgba(10, 98, 230, 0.3), 0 0 5px 5px rgba(10, 98, 230, 0.3);
+	transition: all 0.3s ease-out;
+}
+
+.view__btn > ion-icon {
+	font-size: 1.4em;
+	margin-right: 0.1em;
+}
+
+.view__btn:active {
+	box-shadow: 0 0 1px 3px rgba(10, 98, 230, 0.3), 0 0 6px 7px rgba(10, 90, 209, 0.411);
+}
+
+.view__btn:active {
+	box-shadow: 0 0 1px 6px rgba(10, 98, 230, 0.3), 0 0 5px 5px rgba(10, 98, 230, 0.3);
+}
