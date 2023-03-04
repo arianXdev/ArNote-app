@@ -1,0 +1,32 @@
+.emptyWarning {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	opacity: 0.8;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	pointer-events: none;
+}
+
+.emptyWarning img {
+	width: 30vw;
+}
+
+.emptyWarning p {
+	font-size: 2.1vw;
+	font-weight: 900;
+	color: var(--primary-color);
+}
+
+@media only screen and (max-width: 992px) {
+	.emptyWarning img {
+		width: 50vw;
+	}
+
+	.emptyWarning p {
+		font-size: 5vw;
+	}
+}
