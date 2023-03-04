@@ -1,22 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useImmer } from "use-immer";
 
 import { getNote, editNote } from "../../services/notesService";
 
+import { toast } from "react-hot-toast";
 import "./ViewNote.css";
 
 const ViewNote = () => {
 	const { noteId } = useParams();
 	const navigate = useNavigate();
 	const [note, setNote] = useImmer({});
+	const [previousNote, setPreviousNote] = useState({});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const { data: noteData } = await getNote(noteId);
 				setNote(noteData);
+				setPreviousNote(noteData);
 			} catch (err) {
 				console.log(err.message);
 			}
@@ -26,9 +29,14 @@ const ViewNote = () => {
 	}, []);
 
 	const handleDone = async () => {
-		const { status, statusText } = await editNote(note, noteId);
-		if (status === 200 && statusText === "OK") {
-			navigate("/notes");
+		// If the note hasn't had any changes and was the same
+		if (note === previousNote) navigate("/notes");
+		else {
+			const { status, statusText } = await editNote(note, noteId);
+			if (status === 200 && statusText === "OK") {
+				toast.success("Saved!");
+				navigate("/notes");
+			}
 		}
 	};
 

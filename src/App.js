@@ -6,6 +6,8 @@ import { Outlet } from "react-router";
 
 import { getAllNotes, getAllCategories } from "./services/notesService";
 
+import { Toaster } from "react-hot-toast";
+
 import "./App.css";
 
 const App = () => {
@@ -35,6 +37,7 @@ const App = () => {
 
 	return (
 		<div className="App">
+			<Toaster />
 			<Outlet />
 
 			<aside className="sidebar"></aside>
