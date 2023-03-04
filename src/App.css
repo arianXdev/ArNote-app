@@ -75,17 +75,6 @@
 	letter-spacing: 1.3px;
 }
 
-.notes {
-	width: 100%;
-	height: 100%;
-	margin-top: 1em;
-	padding: 0 0.5em;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: flex-start;
-}
-
 @media screen and (max-width: 1440px) {
 	.Main {
 		padding: 0 1em 0 1em;

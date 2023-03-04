@@ -1,21 +1,21 @@
-import { Search, Note } from "./components";
+import { Search, Favorites, Notes } from "./components";
+
+import { useImmer } from "use-immer";
 
 import "./App.css";
 
 const App = () => {
+	const [notes, setNotes] = useImmer([]);
+	const [favoriteNotes, setFavoriteNotes] = useImmer([]);
+
 	return (
 		<div className="App">
 			<aside className="sidebar"></aside>
-
 			<main className="Main">
 				<div className="container">
 					<Search />
-					<section className="favorites hidden">
-						<h2 className="favorites__title">Favorites</h2>
-						<div className="favorites__body"></div>
-					</section>
-
-					<section className="notes"></section>
+					<Favorites favoriteNotes={favoriteNotes} />
+					<Notes notes={notes} />
 				</div>
 			</main>
 
