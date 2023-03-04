@@ -15,7 +15,7 @@
 			"id": 2,
 			"category": "1",
 			"isFavorite": false,
-			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\n",
 			"date": {
 				"year": "2023",
 				"month": "March",
