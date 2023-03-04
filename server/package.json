@@ -1,0 +1,17 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "json-server --watch db.json -p 9000"
+	},
+	"keywords": [
+		"server"
+	],
+	"author": "Arian Hosseini",
+	"license": "MIT",
+	"dependencies": {
+		"json-server": "^0.17.2"
+	}
+}
