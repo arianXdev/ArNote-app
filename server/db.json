@@ -70,19 +70,23 @@
 	"categories": [
 		{
 			"id": "1",
-			"name": "Personal"
+			"name": "Personal",
+			"color": "blue"
 		},
 		{
 			"id": "2",
-			"name": "Work"
+			"name": "Work",
+			"color": "gray"
 		},
 		{
 			"id": "3",
-			"name": "Learning"
+			"name": "Learning",
+			"color": "green"
 		},
 		{
 			"id": "4",
-			"name": "Reminder"
+			"name": "Reminder",
+			"color": "red"
 		}
 	]
 }
