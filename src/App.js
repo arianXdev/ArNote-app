@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
 import { Search, Favorites, Notes, FAB } from "./components";
+import { Outlet } from "react-router";
 
 import { getAllNotes, getAllCategories } from "./services/notesService";
 
@@ -30,10 +31,12 @@ const App = () => {
 		};
 
 		fetchData();
-	}, []);
+	}, [notes, favoriteNotes, categories]);
 
 	return (
 		<div className="App">
+			<Outlet />
+
 			<aside className="sidebar"></aside>
 			<main className="Main">
 				<div className="container">
