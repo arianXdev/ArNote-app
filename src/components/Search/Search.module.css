@@ -27,3 +27,9 @@ ion-icon[name="search-outline"] {
 	color: var(--gray-color);
 	letter-spacing: 1.6px;
 }
+
+@media screen and (max-width: 768px) {
+	.SearchInput {
+		padding-right: 0;
+	}
+}

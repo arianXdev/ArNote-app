@@ -24,10 +24,10 @@
 
 @media only screen and (max-width: 992px) {
 	.emptyWarning img {
-		width: 50vw;
+		width: 70vw;
 	}
 
 	.emptyWarning p {
-		font-size: 5vw;
+		font-size: 7.5vw;
 	}
 }
