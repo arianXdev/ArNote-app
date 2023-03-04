@@ -33,7 +33,7 @@ const App = () => {
 		};
 
 		fetchData();
-	}, [notes, favoriteNotes, categories]);
+	}, []);
 
 	return (
 		<div className="App">
