@@ -8,7 +8,32 @@
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.note.favorite {
+.note.blue {
+	background-color: var(--primary-color);
+}
+
+.note.yellow {
+	background-color: var(--yellow-color);
+}
+
+.note.yellow .note__body {
+	color: var(--black-color) !important;
+}
+
+.note.yellow .note__date {
+	color: var(--gray-color) !important;
+}
+
+.note.green {
+	background-color: var(--green-color);
+}
+
+.note.gray {
+	background-color: var(--gray-color);
+}
+
+.note.red {
+	background-color: var(--red-color);
 }
 
 .note.favorite::before {
