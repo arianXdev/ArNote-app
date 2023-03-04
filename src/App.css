@@ -20,28 +20,6 @@
 	border-bottom-right-radius: 4vw;
 }
 
-.add {
-	position: fixed;
-	z-index: 3;
-	bottom: 30px;
-	right: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 15px;
-	font-size: 35px;
-	border-radius: 100%;
-	color: #fff;
-	background: rgb(8, 71, 238);
-	background: linear-gradient(120deg, rgba(8, 71, 238, 1) 0%, rgba(0, 212, 255, 1) 100%);
-	box-shadow: 0px 0px 0 5px rgba(16, 97, 191, 0.3), 0px 0px 5px 5px rgba(4, 81, 156, 0.3);
-	transition: all 0.3s ease-in-out;
-}
-
-.add:hover {
-	box-shadow: 0px 0px 0 7px rgba(16, 97, 191, 0.3), 0px 0px 9px 9px rgba(14, 81, 156, 0.3);
-}
-
 @media screen and (max-width: 1440px) {
 	.Main {
 		padding: 0 1em 0 1em;

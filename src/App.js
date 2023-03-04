@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
-import { Search, Favorites, Notes } from "./components";
+import { Search, Favorites, Notes, FAB } from "./components";
 
 import { getAllNotes, getAllCategories } from "./services/notesService";
 
@@ -43,9 +43,7 @@ const App = () => {
 				</div>
 			</main>
 
-			<button className="add">
-				<ion-icon name="add"></ion-icon>
-			</button>
+			<FAB />
 		</div>
 	);
 };
