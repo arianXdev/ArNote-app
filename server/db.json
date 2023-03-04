@@ -1,0 +1,47 @@
+{
+	"notes": [
+		{
+			"id": 1,
+			"category": "1",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio."
+		},
+		{
+			"id": 2,
+			"category": "1",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio."
+		},
+		{
+			"id": 3,
+			"category": "4",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio."
+		},
+		{
+			"id": 4,
+			"category": "2",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio."
+		},
+		{
+			"id": 5,
+			"category": "3",
+			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio."
+		}
+	],
+	"categories": [
+		{
+			"id": "1",
+			"name": "Personal"
+		},
+		{
+			"id": "2",
+			"name": "Work"
+		},
+		{
+			"id": "3",
+			"name": "Learning"
+		},
+		{
+			"id": "4",
+			"name": "Reminder"
+		}
+	]
+}
