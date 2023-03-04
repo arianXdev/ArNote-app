@@ -1,92 +1,92 @@
 {
-	"notes": [
-		{
-			"id": 1,
-			"category": "1",
-			"isFavorite": false,
-			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
-			"date": {
-				"year": "2023",
-				"month": "March",
-				"day": "21"
-			}
-		},
-		{
-			"id": 2,
-			"category": "1",
-			"isFavorite": false,
-			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\n",
-			"date": {
-				"year": "2023",
-				"month": "March",
-				"day": "21"
-			}
-		},
-		{
-			"id": 3,
-			"category": "4",
-			"isFavorite": false,
-			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
-			"date": {
-				"year": "2023",
-				"month": "March",
-				"day": "21"
-			}
-		},
-		{
-			"id": 4,
-			"category": "2",
-			"isFavorite": false,
-			"body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
-			"date": {
-				"year": "2023",
-				"month": "March",
-				"day": "21"
-			}
-		},
-		{
-			"id": 5,
-			"category": "3",
-			"isFavorite": true,
-			"body": "This is a favorite note.",
-			"date": {
-				"year": "2024",
-				"month": "February",
-				"day": "9"
-			}
-		},
-		{
-			"id": 6,
-			"category": "4",
-			"isFavorite": true,
-			"body": "Hello Everybody!",
-			"date": {
-				"year": "2022",
-				"month": "January",
-				"day": "19"
-			}
-		}
-	],
-	"categories": [
-		{
-			"id": "1",
-			"name": "Personal",
-			"color": "blue"
-		},
-		{
-			"id": "2",
-			"name": "Work",
-			"color": "gray"
-		},
-		{
-			"id": "3",
-			"name": "Learning",
-			"color": "green"
-		},
-		{
-			"id": "4",
-			"name": "Reminder",
-			"color": "red"
-		}
-	]
+  "notes": [
+    {
+      "id": 1,
+      "category": "1",
+      "isFavorite": false,
+      "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
+      "date": {
+        "year": "2023",
+        "month": "March",
+        "day": "21"
+      }
+    },
+    {
+      "id": 2,
+      "category": "1",
+      "isFavorite": false,
+      "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\nLorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.\n\n\n",
+      "date": {
+        "year": "2023",
+        "month": "March",
+        "day": "21"
+      }
+    },
+    {
+      "id": 3,
+      "category": "4",
+      "isFavorite": false,
+      "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
+      "date": {
+        "year": "2023",
+        "month": "March",
+        "day": "21"
+      }
+    },
+    {
+      "id": 4,
+      "category": "2",
+      "isFavorite": false,
+      "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio minus, placeat inventore dicta rerum totam officiis dolor corrupti optio.",
+      "date": {
+        "year": "2023",
+        "month": "March",
+        "day": "21"
+      }
+    },
+    {
+      "id": 5,
+      "category": "3",
+      "isFavorite": true,
+      "body": "This is a favorite note.",
+      "date": {
+        "year": "2024",
+        "month": "February",
+        "day": "9"
+      }
+    },
+    {
+      "id": 6,
+      "category": "4",
+      "isFavorite": true,
+      "body": "Hello Everybody!",
+      "date": {
+        "year": "2022",
+        "month": "January",
+        "day": "19"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Personal",
+      "color": "blue"
+    },
+    {
+      "id": "2",
+      "name": "Work",
+      "color": "gray"
+    },
+    {
+      "id": "3",
+      "name": "Learning",
+      "color": "green"
+    },
+    {
+      "id": "4",
+      "name": "Reminder",
+      "color": "red"
+    }
+  ]
 }
