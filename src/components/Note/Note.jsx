@@ -1,13 +1,12 @@
 import "./Note.css";
 
-const Note = ({ favorite }) => {
+const Note = ({ note: { isFavorite, id, category, body, date } }) => {
 	return (
-		<article className={favorite ? "note favorite" : "note"}>
-			<div className="note__body">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente hic sed nobis iste ipsum possimus natus pariatur omnis incidunt aliquam?
+		<article className={isFavorite ? "note favorite" : "note"} id={id} category={category}>
+			<div className="note__body">{body}</div>
+			<div className="note__date">
+				{date.month} {date.day}, {date.year}
 			</div>
-
-			<div className="note__date">March 3, 2023</div>
 
 			<button className="note__edit-btn">
 				<ion-icon name="create-outline"></ion-icon>
