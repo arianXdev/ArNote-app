@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 import "./Note.css";
@@ -20,9 +21,9 @@ const Note = ({ note: { isFavorite, id, category, body, date } }) => {
 				{date.month} {date.day}, {date.year}
 			</div>
 
-			<button className="note__edit-btn">
-				<ion-icon name="create-outline"></ion-icon>
-			</button>
+			<Link to={`/notes/${id}`} className="note__edit-btn">
+				<ion-icon name="expand-outline"></ion-icon>
+			</Link>
 
 			<button className="note__star-btn">
 				<ion-icon name="star"></ion-icon>
