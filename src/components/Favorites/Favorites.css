@@ -1,0 +1,36 @@
+.favorites {
+	position: relative;
+	padding: 1.5em 0.8em;
+	margin: 1.1em 0;
+	border-radius: 60px;
+	background-color: var(--foreground-color);
+}
+
+.favorites__body {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 1em;
+}
+
+.favorites.hidden {
+	display: none;
+}
+
+.favorites__title {
+	position: absolute;
+	top: -23px;
+	left: 37px;
+	font-weight: 900;
+	font-size: 1.9em;
+	color: var(--favorites-text-color);
+	letter-spacing: 1.3px;
+}
+
+@media screen and (max-width: 425px) {
+	.favorites {
+		padding: 0.1em;
+		padding-top: 0.7em;
+	}
+}
