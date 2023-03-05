@@ -26,6 +26,9 @@
 	font-size: 1.9em;
 	color: var(--favorites-text-color);
 	letter-spacing: 1.3px;
+	user-select: none;
+	-webkit-user-select: none;
+	pointer-events: none;
 }
 
 @media screen and (max-width: 425px) {
