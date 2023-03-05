@@ -5,7 +5,8 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin-top: 0.3em;
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
+	padding: 0 1em;
 }
 
 ion-icon[name="search-outline"] {
@@ -25,11 +26,16 @@ ion-icon[name="search-outline"] {
 
 .SearchInput::placeholder {
 	color: var(--gray-color);
-	letter-spacing: 1.6px;
 }
 
 @media screen and (max-width: 768px) {
 	.SearchInput {
 		padding-right: 0;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.Search {
+		padding: 0 0.7em;
 	}
 }
