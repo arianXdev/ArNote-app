@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useImmer } from "use-immer";
 
 import { getNote, editNote } from "../../services/notesService";
+
+import { NoteContext } from "../../context/NoteContext";
 
 import { toast } from "react-hot-toast";
 import "./ViewNote.css";
@@ -13,6 +15,8 @@ const ViewNote = () => {
 	const navigate = useNavigate();
 	const [note, setNote] = useImmer({});
 	const [previousNote, setPreviousNote] = useState({});
+
+	const { setNotes, setFavoriteNotes } = useContext(NoteContext);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -32,9 +36,20 @@ const ViewNote = () => {
 		// If the note hasn't had any changes and was the same
 		if (note === previousNote) navigate("/notes");
 		else {
-			const { status, statusText } = await editNote(note, noteId);
+			const { data: updatedNote, status, statusText } = await editNote(note, noteId);
 			if (status === 200 && statusText === "OK") {
 				toast.success("Saved!");
+
+				updatedNote.isFavorite
+					? setFavoriteNotes((draft) => {
+							const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
+							draft[noteIndex] = { ...updatedNote };
+					  })
+					: setNotes((draft) => {
+							const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
+							draft[noteIndex] = { ...updatedNote };
+					  });
+
 				navigate("/notes");
 			}
 		}
