@@ -7,6 +7,7 @@ import App from "./App";
 import { ViewNote } from "./components";
 
 import "./index.css";
+import "animate.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

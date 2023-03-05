@@ -64,7 +64,7 @@ const ViewNote = () => {
 	};
 
 	return (
-		<div className="view">
+		<div className="view animate__animated animate__fadeIn">
 			<div className="view__box">
 				<textarea
 					className="view__body"
