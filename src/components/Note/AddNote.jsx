@@ -2,12 +2,19 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 
+import { useImmer } from "use-immer";
+
+import { addNote } from "../../services/notesService";
+
 import { NoteContext } from "../../context/NoteContext";
+import { toast } from "react-hot-toast";
 
 import "./AddNote.css";
 
 const AddNote = () => {
-	const { categories } = useContext(NoteContext);
+	const { categories, setNotes } = useContext(NoteContext);
+
+	const [note, setNote] = useImmer({});
 	const navigate = useNavigate();
 
 	const [addBtnState, setAddBtnState] = useState(false);
@@ -24,17 +31,33 @@ const AddNote = () => {
 		return () => window.removeEventListener("keydown", handleESC);
 	}, []);
 
+	const handleAdd = async (category) => {
+		const newNote = { ...note, category, isFavorite: false, date: { year: "2023", month: "March", day: "21" } };
+		const { data, status } = await addNote(newNote);
+
+		if (status === 201) {
+			setNotes((draft) => {
+				draft.push(data);
+			});
+
+			toast.success("Added!");
+			navigate("/notes");
+		} else {
+			toast.error("Error! Couldn't add a new note!");
+		}
+	};
+
 	return (
 		<div className="add animate__animated animate__fadeIn">
 			<div className="add__box">
 				<textarea
 					className="add__body"
-					// value={note.body}
-					// onChange={(e) =>
-					// setNote((draft) => {
-					// draft.body = e.target.value;
-					// })
-					// }
+					value={note.body}
+					onChange={(e) =>
+						setNote((draft) => {
+							draft.body = e.target.value;
+						})
+					}
 				></textarea>
 
 				<div className={addBtnClass} style={{ width: addBtnState ? "590px" : "110px" }} onClick={() => setAddBtnState((prevState) => !prevState)}>
@@ -56,7 +79,7 @@ const AddNote = () => {
 								key={c.id}
 								onClick={(e) => {
 									e.stopPropagation();
-									console.log(c.name);
+									handleAdd(c.id);
 								}}
 								style={{
 									transition: `all ${parseInt(c.id)}s ease-in`,
