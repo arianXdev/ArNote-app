@@ -68,6 +68,7 @@ const ViewNote = () => {
 			<div className="view__box">
 				<textarea
 					className="view__body"
+					placeholder="Take a note..."
 					value={note.body}
 					onChange={(e) =>
 						setNote((draft) => {

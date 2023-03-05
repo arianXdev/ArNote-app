@@ -52,6 +52,7 @@ const AddNote = () => {
 			<div className="add__box">
 				<textarea
 					className="add__body"
+					placeholder="Take a note..."
 					value={note.body}
 					onChange={(e) =>
 						setNote((draft) => {
