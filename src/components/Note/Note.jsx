@@ -3,15 +3,11 @@ import classNames from "classnames";
 
 import "./Note.css";
 
-const Note = ({ note: { isFavorite, id, category, body, date } }) => {
+const Note = ({ note: { isFavorite, id, category, body, date }, color }) => {
 	const noteClass = classNames({
 		note: true,
+		[color]: true,
 		favorite: isFavorite,
-		blue: category === "1",
-		gray: category === "2",
-		green: category === "3",
-		red: category === "4",
-		yellow: category === "5",
 	});
 
 	return (

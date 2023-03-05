@@ -38,7 +38,7 @@ const App = () => {
 	}, []);
 
 	return (
-		<NoteContext.Provider value={{ setNotes, setFavoriteNotes }}>
+		<NoteContext.Provider value={{ categories, setNotes, setFavoriteNotes }}>
 			<div className="App">
 				<Outlet />
 
