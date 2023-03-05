@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
-import { Search, Favorites, Notes, FAB } from "./components";
+import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate } from "react-router";
 
 import { getAllNotes, getAllCategories, deleteNote } from "./services/notesService";
@@ -86,7 +86,7 @@ const App = () => {
 			<div className="App">
 				<Outlet />
 
-				<aside className="sidebar"></aside>
+				<Sidebar />
 				<main className="Main">
 					<div className="container">
 						<Search />
