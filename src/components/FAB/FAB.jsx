@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./FAB.css";
 
@@ -16,9 +17,9 @@ const FAB = () => {
 	};
 
 	return (
-		<button className={isVisible ? "add" : "add hide"}>
+		<Link to="/notes/add" className={isVisible ? "addBtn" : "addBtn hide"}>
 			<ion-icon name="add"></ion-icon>
-		</button>
+		</Link>
 	);
 };
 
