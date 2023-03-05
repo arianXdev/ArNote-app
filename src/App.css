@@ -20,6 +20,29 @@
 	border-bottom-right-radius: 4vw;
 }
 
+.toast-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn {
+	padding: 0.5em 1em;
+	font-size: 0.9em;
+	border-radius: 30px;
+	margin: 0 0.2em;
+	transition: all 0.2s ease-out;
+}
+
+.btn--confirm {
+	background: none;
+}
+
+.btn--confirm:hover {
+	background-color: var(--foreground-color);
+}
+
 @media screen and (max-width: 1440px) {
 	.Main {
 		padding: 0 1em 0 1em;

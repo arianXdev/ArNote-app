@@ -4,4 +4,6 @@ export const NoteContext = createContext({
 	categories: [],
 	setNotes: () => {},
 	setFavoriteNotes: () => {},
+	setNoteId: () => {},
+	handleDelete: () => {},
 });

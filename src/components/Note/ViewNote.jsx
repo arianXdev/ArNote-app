@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import { useImmer } from "use-immer";
 
 import { getNote, editNote } from "../../services/notesService";
@@ -16,7 +15,7 @@ const ViewNote = () => {
 	const [note, setNote] = useImmer({});
 	const [previousNote, setPreviousNote] = useState({});
 
-	const { setNotes, setFavoriteNotes } = useContext(NoteContext);
+	const { setNotes, setFavoriteNotes, setNoteId, handleDelete } = useContext(NoteContext);
 
 	const handleESC = (e) => (e.key === "Escape" ? navigate("/notes") : null);
 
@@ -31,6 +30,8 @@ const ViewNote = () => {
 				const { data: noteData } = await getNote(noteId);
 				setNote(noteData);
 				setPreviousNote(noteData);
+
+				setNoteId(noteId);
 			} catch (err) {
 				console.log(err.message);
 			}
@@ -78,6 +79,10 @@ const ViewNote = () => {
 				<button onClick={handleDone} className="view__btn">
 					<ion-icon name="checkmark"></ion-icon>
 					<span>Done</span>
+				</button>
+
+				<button onClick={handleDelete} className="view__delete-btn">
+					<ion-icon name="trash"></ion-icon>
 				</button>
 			</div>
 
