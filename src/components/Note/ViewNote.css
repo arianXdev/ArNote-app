@@ -4,7 +4,6 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 10;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -12,6 +11,7 @@
 	transition: all 0.4s ease-in;
 	font-size: 16px;
 	line-height: 1.8;
+	z-index: 4;
 }
 
 .bg-blur {
@@ -20,7 +20,6 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 4;
 	backdrop-filter: blur(4px);
 	-webkit-backdrop-filter: blur(4px);
 	background-color: #5252524d;
@@ -36,6 +35,7 @@
 	border-radius: 50px;
 	box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.1);
 	text-align: center;
+	z-index: 10;
 }
 
 .view__body {

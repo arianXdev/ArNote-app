@@ -18,6 +18,13 @@ const ViewNote = () => {
 
 	const { setNotes, setFavoriteNotes } = useContext(NoteContext);
 
+	const handleESC = (e) => (e.key === "Escape" ? navigate("/notes") : null);
+
+	useEffect(() => {
+		window.addEventListener("keydown", handleESC);
+		return () => window.removeEventListener("keydown", handleESC);
+	}, []);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -56,27 +63,26 @@ const ViewNote = () => {
 	};
 
 	return (
-		<>
-			<div className="view">
-				<div className="view__box">
-					<textarea
-						className="view__body"
-						value={note.body}
-						onChange={(e) =>
-							setNote((draft) => {
-								draft.body = e.target.value;
-							})
-						}
-					></textarea>
+		<div className="view">
+			<div className="view__box">
+				<textarea
+					className="view__body"
+					value={note.body}
+					onChange={(e) =>
+						setNote((draft) => {
+							draft.body = e.target.value;
+						})
+					}
+				></textarea>
 
-					<button onClick={handleDone} className="view__btn">
-						<ion-icon name="checkmark"></ion-icon>
-						<span>Done</span>
-					</button>
-				</div>
+				<button onClick={handleDone} className="view__btn">
+					<ion-icon name="checkmark"></ion-icon>
+					<span>Done</span>
+				</button>
 			</div>
-			<div className="bg-blur"></div>
-		</>
+
+			<div className="bg-blur" onClick={() => navigate("/notes")}></div>
+		</div>
 	);
 };
 

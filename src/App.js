@@ -40,7 +40,6 @@ const App = () => {
 	return (
 		<NoteContext.Provider value={{ setNotes, setFavoriteNotes }}>
 			<div className="App">
-				<Toaster />
 				<Outlet />
 
 				<aside className="sidebar"></aside>
@@ -53,6 +52,7 @@ const App = () => {
 				</main>
 
 				<FAB />
+				<Toaster />
 			</div>
 		</NoteContext.Provider>
 	);
