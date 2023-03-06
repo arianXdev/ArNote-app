@@ -38,6 +38,13 @@ export const addCategory = (category) => {
 	return axios.post(URL, category);
 };
 
+// @desc Delete a category
+// @route DELETE http://localhost:9000/categories/:categoryId
+export const deleteCategory = (categoryId) => {
+	const URL = `${SERVER_URL}/categories/${categoryId}`;
+	return axios.delete(URL);
+};
+
 // @desc Add a new note
 // @route POST http://localhost:9000/notes
 export const addNote = (note) => {
