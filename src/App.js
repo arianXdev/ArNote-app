@@ -28,30 +28,30 @@ const App = () => {
 
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				// Get all notes from server
-				const { data: notesData } = await getAllNotes();
-				// Get all categories from server
-				const { data: categoriesData } = await getAllCategories();
+	const fetchData = async () => {
+		try {
+			// Get all notes from server
+			const { data: notesData } = await getAllNotes();
+			// Get all categories from server
+			const { data: categoriesData } = await getAllCategories();
 
-				setFavoriteNotes(notesData.filter((note) => note.isFavorite === true));
+			setFavoriteNotes(notesData.filter((note) => note.isFavorite === true));
 
-				if (categoryId) {
-					setCategorizedNotes(notesData.filter((note) => note.category === categoryId));
-					setNotes(notesData);
-				} else {
-					setNotes(notesData.filter((note) => note.isFavorite === false));
-					setAllNotes(notesData);
-				}
-
-				setCategories(categoriesData);
-			} catch (err) {
-				console.log(err.message);
+			if (categoryId) {
+				setCategorizedNotes(notesData.filter((note) => note.category === categoryId));
+				setNotes(notesData);
+			} else {
+				setNotes(notesData.filter((note) => note.isFavorite === false));
+				setAllNotes(notesData);
 			}
-		};
 
+			setCategories(categoriesData);
+		} catch (err) {
+			console.log(err.message);
+		}
+	};
+
+	useEffect(() => {
 		fetchData();
 	}, []);
 
@@ -102,6 +102,7 @@ const App = () => {
 
 	const handleSearchNote = _.debounce((query) => {
 		if (!query) {
+			fetchData();
 			setFavoriteNotes(allNotes.filter((note) => note.isFavorite === true));
 			return setNotes(allNotes.filter((note) => note.isFavorite === false));
 		}
