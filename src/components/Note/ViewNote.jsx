@@ -15,7 +15,7 @@ const ViewNote = () => {
 	const [note, setNote] = useImmer({});
 	const [previousNote, setPreviousNote] = useState({});
 
-	const { setNotes, setFavoriteNotes, setNoteId, handleDelete } = useContext(NoteContext);
+	const { setNotes, setFavoriteNotes, setAllNotes, setNoteId, handleDelete } = useContext(NoteContext);
 
 	const handleESC = (e) => (e.key === "Escape" ? navigate("/notes") : null);
 
@@ -48,15 +48,22 @@ const ViewNote = () => {
 			if (status === 200 && statusText === "OK") {
 				toast.success("Saved!");
 
-				updatedNote.isFavorite
-					? setFavoriteNotes((draft) => {
-							const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
-							draft[noteIndex] = { ...updatedNote };
-					  })
-					: setNotes((draft) => {
-							const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
-							draft[noteIndex] = { ...updatedNote };
-					  });
+				if (updatedNote.isFavorite) {
+					setFavoriteNotes((draft) => {
+						const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
+						draft[noteIndex] = { ...updatedNote };
+					});
+				} else {
+					setNotes((draft) => {
+						const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
+						draft[noteIndex] = { ...updatedNote };
+					});
+				}
+
+				setAllNotes((draft) => {
+					const noteIndex = draft.findIndex((n) => n.id === updatedNote.id); // get the index of updated note
+					draft[noteIndex] = { ...updatedNote };
+				});
 
 				navigate("/notes");
 			}
