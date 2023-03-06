@@ -31,6 +31,13 @@ export const getCategory = (categoryId) => {
 	return axios.get(URL);
 };
 
+// @desc Add a new category
+// @route POST http://localhost:9000/categories
+export const addCategory = (category) => {
+	const URL = `${SERVER_URL}/categories`;
+	return axios.post(URL, category);
+};
+
 // @desc Add a new note
 // @route POST http://localhost:9000/notes
 export const addNote = (note) => {

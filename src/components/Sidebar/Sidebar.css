@@ -87,6 +87,22 @@
 	box-shadow: 0 0 0 4px #bbbbbb9a, 0 0 10px 4px #bbbbbb9a;
 }
 
+.sidebar__add {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.3em;
+	padding: 0.4em;
+	background: none;
+	border-radius: 50%;
+	margin: 10px 0;
+	transition: all 0.2s ease-out;
+}
+
+.sidebar__add:hover {
+	background-color: var(--foreground-color);
+}
+
 @media screen and (max-width: 1365px) {
 	.sidebar {
 		display: none;

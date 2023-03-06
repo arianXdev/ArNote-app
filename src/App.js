@@ -4,12 +4,13 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote } from "./services/notesService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory } from "./services/notesService";
 
 import { NoteContext } from "./context/NoteContext";
 import _ from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 import { RED } from "./helpers/colors";
 import "./App.css";
@@ -38,7 +39,7 @@ const App = () => {
 			setFavoriteNotes(notesData.filter((note) => note.isFavorite === true));
 
 			if (categoryId) {
-				setCategorizedNotes(notesData.filter((note) => note.category === categoryId));
+				setCategorizedNotes(notesData.filter((note) => note.category === parseInt(categoryId)));
 				setNotes(notesData);
 			} else {
 				setNotes(notesData.filter((note) => note.isFavorite === false));
@@ -56,7 +57,7 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		setCategorizedNotes(notes.filter((note) => note.category === categoryId));
+		setCategorizedNotes(notes.filter((note) => note.category === parseInt(categoryId)));
 	}, [categoryId]);
 
 	const handleDelete = async () => {
@@ -116,8 +117,77 @@ const App = () => {
 		handleSearchNote("");
 	};
 
+	const handleAddCategory = async () => {
+		const inputOptions = new Promise((resolve) => {
+			setTimeout(() => {
+				resolve({
+					blue: "Blue",
+					green: "Green",
+					yellow: "Yellow",
+					gray: "Gray",
+					red: "Red",
+				});
+			}, 1000);
+		});
+
+		const { value: color } = await Swal.fire({
+			title: "Select the color of category",
+			input: "radio",
+			inputOptions: inputOptions,
+			confirmButtonText: "Next",
+			customClass: {
+				popup: "popup-custom",
+				confirmButton: "confirmButton-custom confirmButton-custom--red",
+			},
+			inputValidator: (value) => {
+				if (!value) {
+					return "You need to choose a color!";
+				}
+			},
+		});
+		if (color) {
+			const { value: name } = await Swal.fire({
+				title: "Enter your category name",
+				input: "text",
+				confirmButtonText: "Create",
+				customClass: {
+					popup: "popup-custom",
+					input: "input-custom",
+					confirmButton: "confirmButton-custom confirmButton-custom--blue",
+				},
+				inputValidator: (value) => {
+					if (!value) {
+						return "You need to specify the category name!";
+					}
+				},
+			});
+
+			if (color && name) {
+				if (categories.length < 5) {
+					const { data: newCategory } = await addCategory({ name, color });
+					setCategories((draft) => {
+						draft.push(newCategory);
+					});
+				} else {
+					Swal.fire({
+						icon: "error",
+						title: "Sorry :(",
+						text: "You can't create more than 5 categories!",
+						confirmButtonText: "Really? Alright",
+						customClass: {
+							popup: "popup-custom",
+							confirmButton: "confirmButton-custom confirmButton-custom--blue",
+						},
+					});
+				}
+			}
+		}
+	};
+
 	return (
-		<NoteContext.Provider value={{ categories, setNotes, setAllNotes, setFavoriteNotes, setNoteId, handleDelete, handleSearchNote, searchInputRef, clearSearch }}>
+		<NoteContext.Provider
+			value={{ categories, handleAddCategory, setNotes, setAllNotes, setFavoriteNotes, setNoteId, handleDelete, handleSearchNote, searchInputRef, clearSearch }}
+		>
 			<div className="App">
 				<Outlet />
 

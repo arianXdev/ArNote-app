@@ -80,3 +80,47 @@ button {
 .animate__animated.animate__fadeIn {
 	--animate-duration: 0.2s;
 }
+
+/* SweetAlert2 Custom Classes */
+.popup-custom {
+	border-radius: 35px;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.input-custom {
+	border-radius: 30px !important;
+	border: none;
+	box-shadow: 0 0 8px rgba(49, 49, 49, 0.2);
+}
+
+.input-custom:focus {
+	border: unset !important;
+	box-shadow: 0 0 8px rgba(49, 49, 49, 0.2) !important;
+}
+
+.confirmButton-custom {
+	padding: 12px 20px !important;
+	border-radius: 30px !important;
+	box-shadow: 0 0 10px #0066ffb0;
+}
+
+.confirmButton-custom--blue {
+	background-color: var(--primary-color) !important;
+}
+
+.confirmButton-custom--red {
+	background-color: var(--red-color) !important;
+	box-shadow: 0 0 5px #ff0d3dad;
+}
+
+.confirmButton-custom--red:focus {
+	box-shadow: none !important;
+}
+
+.confirmButton-custom--gray {
+	box-shadow: 0 0 10px #a5a5a59d;
+}
+
+.confirmButton-custom--gray:focus {
+	box-shadow: none !important;
+}
