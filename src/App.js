@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 
 import { getAllNotes, getAllCategories, deleteNote } from "./services/notesService";
 
@@ -16,8 +16,11 @@ import "./App.css";
 const App = () => {
 	const [noteId, setNoteId] = useImmer();
 	const [notes, setNotes] = useImmer([]);
+	const [categorizedNotes, setCategorizedNotes] = useImmer([]);
 	const [favoriteNotes, setFavoriteNotes] = useImmer([]);
 	const [categories, setCategories] = useImmer([]);
+
+	const { categoryId } = useParams();
 
 	const navigate = useNavigate();
 
@@ -30,7 +33,13 @@ const App = () => {
 				const { data: categoriesData } = await getAllCategories();
 
 				setFavoriteNotes(notesData.filter((note) => note.isFavorite === true));
-				setNotes(notesData.filter((note) => note.isFavorite === false));
+
+				if (categoryId) {
+					setCategorizedNotes(notesData.filter((note) => note.category === categoryId));
+					setNotes(notesData);
+				} else {
+					setNotes(notesData.filter((note) => note.isFavorite === false));
+				}
 
 				setCategories(categoriesData);
 			} catch (err) {
@@ -40,6 +49,10 @@ const App = () => {
 
 		fetchData();
 	}, []);
+
+	useEffect(() => {
+		setCategorizedNotes(notes.filter((note) => note.category === categoryId));
+	}, [categoryId]);
 
 	const handleDelete = async () => {
 		toast((t) => (
@@ -91,7 +104,7 @@ const App = () => {
 					<div className="container">
 						<Search />
 						<Favorites favoriteNotes={favoriteNotes} />
-						<Notes notes={notes} />
+						<Notes notes={categoryId ? categorizedNotes : notes} />
 					</div>
 				</main>
 

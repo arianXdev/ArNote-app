@@ -9,8 +9,11 @@ const Sidebar = () => {
 	return (
 		<aside className="sidebar">
 			<nav className="sidebar__categories">
+				<Link to="/notes" className="sidebar__home">
+					<ion-icon name="home"></ion-icon>
+				</Link>
 				{categories.map((category) => (
-					<Link key={category.id} className={`sidebar__item ${category.color}`} name={category.name} to={`/notes/category/${category.name.toLowerCase()}`}></Link>
+					<Link key={category.id} className={`sidebar__item ${category.color}`} name={category.name} to={`/notes/category/${category.id}`}></Link>
 				))}
 			</nav>
 		</aside>
