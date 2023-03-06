@@ -98,7 +98,7 @@ const AddNote = () => {
 				</button>
 			</div>
 
-			<div className="bg-blur" onClick={() => navigate("/notes")}></div>
+			<div className="overlay" onClick={() => navigate("/notes")}></div>
 		</div>
 	);
 };
