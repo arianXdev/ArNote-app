@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useImmer } from "use-immer";
 
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
@@ -7,6 +7,7 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { getAllNotes, getAllCategories, deleteNote } from "./services/notesService";
 
 import { NoteContext } from "./context/NoteContext";
+import _ from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
 
@@ -16,11 +17,14 @@ import "./App.css";
 const App = () => {
 	const [noteId, setNoteId] = useImmer();
 	const [notes, setNotes] = useImmer([]);
+	const [allNotes, setAllNotes] = useImmer([]);
 	const [categorizedNotes, setCategorizedNotes] = useImmer([]);
 	const [favoriteNotes, setFavoriteNotes] = useImmer([]);
 	const [categories, setCategories] = useImmer([]);
 
 	const { categoryId } = useParams();
+
+	const searchInputRef = useRef();
 
 	const navigate = useNavigate();
 
@@ -39,6 +43,7 @@ const App = () => {
 					setNotes(notesData);
 				} else {
 					setNotes(notesData.filter((note) => note.isFavorite === false));
+					setAllNotes(notesData);
 				}
 
 				setCategories(categoriesData);
@@ -82,6 +87,7 @@ const App = () => {
 
 					setFavoriteNotes(notesData.filter((note) => note.isFavorite === true));
 					setNotes(notesData.filter((note) => note.isFavorite === false));
+					setAllNotes(notesData);
 					setCategories(categoriesData);
 
 					navigate("/notes");
@@ -94,8 +100,23 @@ const App = () => {
 		};
 	};
 
+	const handleSearchNote = _.debounce((query) => {
+		if (!query) {
+			setFavoriteNotes(allNotes.filter((note) => note.isFavorite === true));
+			return setNotes(allNotes.filter((note) => note.isFavorite === false));
+		}
+
+		setFavoriteNotes([]);
+		setNotes(() => allNotes.filter((n) => n.body.toLowerCase().includes(query.toLowerCase())));
+	}, 1000);
+
+	const clearSearch = () => {
+		searchInputRef.current.value = "";
+		handleSearchNote("");
+	};
+
 	return (
-		<NoteContext.Provider value={{ categories, setNotes, setFavoriteNotes, setNoteId, handleDelete }}>
+		<NoteContext.Provider value={{ categories, setNotes, setAllNotes, setFavoriteNotes, setNoteId, handleDelete, handleSearchNote, searchInputRef, clearSearch }}>
 			<div className="App">
 				<Outlet />
 

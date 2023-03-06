@@ -12,7 +12,7 @@ import { toast } from "react-hot-toast";
 import "./AddNote.css";
 
 const AddNote = () => {
-	const { categories, setNotes } = useContext(NoteContext);
+	const { categories, setNotes, setAllNotes, clearSearch } = useContext(NoteContext);
 
 	const [note, setNote] = useImmer({});
 	const navigate = useNavigate();
@@ -32,11 +32,18 @@ const AddNote = () => {
 	}, []);
 
 	const handleAdd = async (category) => {
+		// Clear search
+		clearSearch();
+
 		const newNote = { ...note, category, isFavorite: false, date: { year: "2023", month: "March", day: "21" } };
 		const { data, status } = await addNote(newNote);
 
 		if (status === 201) {
 			setNotes((draft) => {
+				draft.push(data);
+			});
+
+			setAllNotes((draft) => {
 				draft.push(data);
 			});
 
