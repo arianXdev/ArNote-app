@@ -35,7 +35,12 @@ const AddNote = () => {
 		// Clear search
 		clearSearch();
 
-		const newNote = { ...note, category, isFavorite: false, date: { year: "2023", month: "March", day: "21" } };
+		const newNote = {
+			...note,
+			category,
+			isFavorite: false,
+			date: { year: new Date().getFullYear(), month: new Intl.DateTimeFormat("en-US", { month: "long" }).format(new Date()), day: new Date().getDate() },
+		};
 		const { data, status } = await addNote(newNote);
 
 		if (status === 201) {
