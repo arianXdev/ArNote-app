@@ -17,6 +17,19 @@
 
 	/* Fonts */
 	--main-font: Ubuntu, Raleway, sans-serif !important;
+
+	/* react-contexify custom styles */
+	--contexify-menu-bgColor: #ffffff;
+	--contexify-separator-color: #eee;
+	--contexify-item-color: #666;
+	--contexify-activeItem-color: #3498db;
+	--contexify-activeItem-bgColor: #e0eefd;
+	--contexify-rightSlot-color: #6f6e77;
+	--contexify-activeRightSlot-color: #3498db;
+	--contexify-arrow-color: #6f6e77;
+	--contexify-activeArrow-color: #fff;
+
+	--contexify-activeItem-radius: 15px;
 }
 
 * {
@@ -123,4 +136,23 @@ button {
 
 .confirmButton-custom--gray:focus {
 	box-shadow: none !important;
+}
+
+/* react-contexify custom styles */
+.contexify {
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(49, 49, 49, 0.2);
+}
+
+.contexify_item ion-icon {
+	font-size: 1.4em;
+	padding: 0 0.3em;
+}
+
+.contexify_item:first-of-type .contexify_itemContent {
+	color: var(--gray-color);
+}
+
+.contexify_item:last-of-type .contexify_itemContent {
+	color: var(--red-color);
 }

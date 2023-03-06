@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import { ViewNote, AddNote, Notes } from "./components";
 
+import "react-contexify/ReactContexify.css";
 import "./index.css";
 import "animate.css";
 

@@ -184,9 +184,40 @@ const App = () => {
 		}
 	};
 
+	const handleEditCategory = async () => {
+		console.log("edit category");
+	};
+
+	const handleDeleteCategory = async () => {
+		toast((t) => (
+			<div className="toast-container">
+				<span>
+					Do you want to <b style={{ color: RED }}>delete</b> this note?
+				</span>
+				<button className="btn btn--cancel" onClick={() => toast.dismiss(t.id)}>
+					Cancel
+				</button>
+				<button className="btn btn--confirm">Yes!</button>
+			</div>
+		));
+	};
+
 	return (
 		<NoteContext.Provider
-			value={{ categories, handleAddCategory, setNotes, setAllNotes, setFavoriteNotes, setNoteId, handleDelete, handleSearchNote, searchInputRef, clearSearch }}
+			value={{
+				categories,
+				handleAddCategory,
+				setNotes,
+				setAllNotes,
+				setFavoriteNotes,
+				setNoteId,
+				handleDelete,
+				handleSearchNote,
+				searchInputRef,
+				clearSearch,
+				handleEditCategory,
+				handleDeleteCategory,
+			}}
 		>
 			<div className="App">
 				<Outlet />
