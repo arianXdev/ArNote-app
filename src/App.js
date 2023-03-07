@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory } from "./services/NoteService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
 import _, { filter } from "lodash";
@@ -184,8 +184,73 @@ const App = () => {
 		}
 	};
 
-	const handleEditCategory = async () => {
-		console.log("edit category");
+	const handleEditCategory = async (e) => {
+		const selectedCategoryId = e.triggerEvent.target.id;
+		const { data: selectedCategory } = await getCategory(selectedCategoryId);
+
+		const inputOptions = new Promise((resolve) => {
+			setTimeout(() => {
+				resolve({
+					blue: "Blue",
+					green: "Green",
+					yellow: "Yellow",
+					gray: "Gray",
+					red: "Red",
+				});
+			}, 1000);
+		});
+
+		const { value: color } = await Swal.fire({
+			title: "Select the color of category",
+			input: "radio",
+			inputOptions: inputOptions,
+			confirmButtonText: "Next",
+			customClass: {
+				popup: "popup-custom",
+				confirmButton: "confirmButton-custom confirmButton-custom--red",
+			},
+			inputValidator: (value) => {
+				if (!value) {
+					return "You need to choose a color!";
+				}
+			},
+		});
+
+		if (color) {
+			const { value: name } = await Swal.fire({
+				title: "Enter your category name",
+				input: "text",
+				inputValue: selectedCategory.name,
+				confirmButtonText: "Edit",
+				customClass: {
+					popup: "popup-custom",
+					input: "input-custom",
+					confirmButton: "confirmButton-custom confirmButton-custom--blue",
+				},
+				inputValidator: (value) => {
+					if (!value) {
+						return "You need to specify the category name!";
+					}
+				},
+			});
+
+			if (color && name) {
+				const { status } = await editCategory({ ...selectedCategory, name, color }, selectedCategoryId);
+
+				if (status === 200) {
+					const { data: updatedCategories } = await getAllCategories();
+					const { data: updatedNotes } = await getAllNotes();
+
+					setCategories(updatedCategories);
+					setNotes(updatedNotes.filter((note) => note.isFavorite === false));
+					setFavoriteNotes(updatedNotes.filter((note) => note.isFavorite === true));
+
+					toast.success("The category was changed successfully!");
+				} else {
+					toast.error("The category wasn't changed!");
+				}
+			}
+		}
 	};
 
 	const handleDeleteCategory = async (id, name) => {
