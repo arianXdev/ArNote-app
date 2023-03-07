@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory } from "./services/NoteService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory, editNote } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
 import _, { filter } from "lodash";
@@ -253,11 +253,14 @@ const App = () => {
 		}
 	};
 
-	const handleDeleteCategory = async (id, name) => {
+	const handleDeleteCategory = async (e) => {
+		const selectedCategoryId = e.triggerEvent.target.id;
+		const { data: selectedCategory } = await getCategory(selectedCategoryId);
+
 		toast((t) => (
 			<div className="toast-container">
 				<span>
-					Do you want to <b style={{ color: RED }}>delete</b> <b>{name}</b> category?
+					Do you want to <b style={{ color: RED }}>delete</b> <b>{selectedCategory.name}</b> category?
 				</span>
 				<button className="btn btn--cancel" onClick={() => toast.dismiss(t.id)}>
 					Cancel
@@ -275,16 +278,25 @@ const App = () => {
 				return toast.error("There must be one category at least.");
 			}
 
-			const deletedNotes = allNotes.filter((note) => note.category === id);
-
-			deletedNotes.map(async (note) => {
-				await deleteNote(note.id);
-			});
-
 			try {
-				const { data: notesData } = await getAllNotes();
+				allNotes.map(async (note) => {
+					if (note.category === parseInt(selectedCategoryId)) {
+						await deleteNote(note.id);
+					}
+				});
+
+				const leftNotes = allNotes.filter((note) => note.category !== parseInt(selectedCategoryId));
+				setAllNotes(leftNotes);
+				setNotes(leftNotes.filter((note) => note.isFavorite === false));
+				setFavoriteNotes(leftNotes.filter((note) => note.isFavorite === true));
+
+				await deleteCategory(selectedCategoryId);
+				setCategories((await getAllCategories()).data);
+
+				navigate("/notes");
 			} catch (err) {
-				console.log(err.message);
+				toast.error(err.message);
+				navigate("/notes");
 			}
 		};
 	};

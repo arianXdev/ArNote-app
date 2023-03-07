@@ -42,11 +42,11 @@ const Sidebar = () => {
 						></Link>
 
 						<Menu id={MENU_ID} animation={{ enter: "scale", exit: "fade" }}>
-							<Item id="edit" categoryid={category.id} onClick={handleEditCategory}>
+							<Item id="edit" onClick={handleEditCategory}>
 								<ion-icon name="create-outline"></ion-icon>
 								Edit category
 							</Item>
-							<Item id="delete" onClick={() => handleDeleteCategory(category.id, category.name)}>
+							<Item id="delete" onClick={handleDeleteCategory}>
 								<ion-icon name="trash-outline"></ion-icon>
 								Delete
 							</Item>
