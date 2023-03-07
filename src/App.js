@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory } from "./services/notesService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
 import _ from "lodash";

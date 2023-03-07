@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { useImmer } from "use-immer";
 
-import { addNote } from "../../services/notesService";
+import { addNote } from "../../services/NoteService";
 
 import { NoteContext } from "../../context/NoteContext";
 import { toast } from "react-hot-toast";

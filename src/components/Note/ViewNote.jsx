@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useImmer } from "use-immer";
 
-import { getNote, editNote } from "../../services/notesService";
+import { getNote, editNote } from "../../services/NoteService";
 
 import { NoteContext } from "../../context/NoteContext";
 
