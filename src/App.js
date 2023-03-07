@@ -4,10 +4,10 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory } from "./services/NoteService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
-import _ from "lodash";
+import _, { filter } from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -188,18 +188,40 @@ const App = () => {
 		console.log("edit category");
 	};
 
-	const handleDeleteCategory = async () => {
+	const handleDeleteCategory = async (id, name) => {
 		toast((t) => (
 			<div className="toast-container">
 				<span>
-					Do you want to <b style={{ color: RED }}>delete</b> this note?
+					Do you want to <b style={{ color: RED }}>delete</b> <b>{name}</b> category?
 				</span>
 				<button className="btn btn--cancel" onClick={() => toast.dismiss(t.id)}>
 					Cancel
 				</button>
-				<button className="btn btn--confirm">Yes!</button>
+				<button className="btn btn--confirm" onClick={handleDelete}>
+					Yes!
+				</button>
 			</div>
 		));
+
+		const handleDelete = async () => {
+			toast.dismiss();
+
+			if (categories.length < 2) {
+				return toast.error("There must be one category at least.");
+			}
+
+			const deletedNotes = allNotes.filter((note) => note.category === id);
+
+			deletedNotes.map(async (note) => {
+				await deleteNote(note.id);
+			});
+
+			try {
+				const { data: notesData } = await getAllNotes();
+			} catch (err) {
+				console.log(err.message);
+			}
+		};
 	};
 
 	return (

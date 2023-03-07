@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { NoteContext } from "../../context/NoteContext";
@@ -32,25 +32,27 @@ const Sidebar = () => {
 				</Link>
 
 				{categories.map((category) => (
-					<Link
-						key={category.id}
-						onContextMenu={handleContextMenu}
-						className={`sidebar__item ${category.color}`}
-						name={category.name}
-						to={`/notes/category/${category.id}`}
-					></Link>
-				))}
+					<Fragment key={category.id}>
+						<Link
+							key={category.id}
+							onContextMenu={handleContextMenu}
+							className={`sidebar__item ${category.color}`}
+							id={category.id}
+							to={`/notes/category/${category.id}`}
+						></Link>
 
-				<Menu id={MENU_ID} animation={{ enter: "scale", exit: "fade" }}>
-					<Item id="edit" onClick={handleEditCategory}>
-						<ion-icon name="create-outline"></ion-icon>
-						Edit category
-					</Item>
-					<Item id="delete" onClick={handleDeleteCategory}>
-						<ion-icon name="trash-outline"></ion-icon>
-						Delete
-					</Item>
-				</Menu>
+						<Menu id={MENU_ID} animation={{ enter: "scale", exit: "fade" }}>
+							<Item id="edit" onClick={() => handleEditCategory(category.id)}>
+								<ion-icon name="create-outline"></ion-icon>
+								Edit category
+							</Item>
+							<Item id="delete" onClick={() => handleDeleteCategory(category.id, category.name)}>
+								<ion-icon name="trash-outline"></ion-icon>
+								Delete
+							</Item>
+						</Menu>
+					</Fragment>
+				))}
 
 				<button className="sidebar__add" onClick={handleAddCategory}>
 					<ion-icon name="add"></ion-icon>
