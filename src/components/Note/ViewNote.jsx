@@ -5,6 +5,7 @@ import { useImmer } from "use-immer";
 import { getNote, editNote } from "../../services/NoteService";
 
 import { NoteContext } from "../../context/NoteContext";
+import { NoteSchema } from "../../validations/NoteValidation";
 
 import { toast } from "react-hot-toast";
 import "./ViewNote.css";
@@ -44,6 +45,13 @@ const ViewNote = () => {
 		// If the note hasn't had any changes and was the same
 		if (note === previousNote) navigate("/notes");
 		else {
+			// Validation
+			try {
+				await NoteSchema.validate(note, { abortEarly: false });
+			} catch (err) {
+				return toast.error(err.message);
+			}
+
 			const { data: updatedNote, status, statusText } = await editNote(note, noteId);
 			if (status === 200 && statusText === "OK") {
 				toast.success("Saved!");

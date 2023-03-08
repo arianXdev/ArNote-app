@@ -9,6 +9,8 @@ import { addNote } from "../../services/NoteService";
 import { NoteContext } from "../../context/NoteContext";
 import { toast } from "react-hot-toast";
 
+import { NoteSchema } from "../../validations/NoteValidation";
+
 import "./AddNote.css";
 
 const AddNote = () => {
@@ -34,6 +36,13 @@ const AddNote = () => {
 	const handleAdd = async (category) => {
 		// Clear search
 		clearSearch();
+
+		// Validation
+		try {
+			await NoteSchema.validate(note, { abortEarly: false });
+		} catch (err) {
+			return toast.error(err.message);
+		}
 
 		const newNote = {
 			...note,
