@@ -102,3 +102,15 @@
 	background-color: var(--red-color);
 	box-shadow: 0 0 5px 2px rgba(230, 9, 57, 0.2);
 }
+
+@media screen and (max-width: 768px) {
+	.view__box {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.view__box {
+		width: 80%;
+	}
+}
