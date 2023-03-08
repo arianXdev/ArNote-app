@@ -49,9 +49,9 @@
 
 .note__star-btn {
 	position: absolute;
-	display: none;
 	top: -10px;
 	left: -10px;
+	display: flex;
 	justify-content: center;
 	align-content: center;
 	padding: 0.7em;
@@ -60,26 +60,37 @@
 	border-radius: 100%;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 	transition: all 0.3s ease-in;
-}
-
-.note__star-btn:hover {
-	background-color: var(--yellow-color);
+	opacity: 0;
+	pointer-events: none;
+	user-select: none;
+	visibility: hidden;
 }
 
 .note__star-btn > ion-icon {
-	color: var(--yellow-color);
+	color: #fff;
 	transition: all 0.3s ease-in;
+	user-select: none;
+	pointer-events: none;
 }
 
 .note__star-btn:hover > ion-icon {
-	color: var(--black-color);
+	color: var(--yellow-color);
 }
 
 .note.favorite > .note__star-btn {
-	display: flex;
+	opacity: 1;
+	pointer-events: all;
+	user-select: auto;
+	visibility: visible;
+	background-color: var(--yellow-color);
 }
 
-.note:hover > .note__edit-btn {
+.note.favorite > .note__star-btn > ion-icon {
+	color: var(--black-color);
+}
+
+.note:not(.note.favorite):hover > .note__edit-btn,
+.note:not(.note.favorite):hover > .note__star-btn {
 	opacity: 1;
 	pointer-events: all;
 	user-select: auto;

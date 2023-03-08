@@ -10,6 +10,7 @@ export const NoteContext = createContext({
 	handleDelete: () => {},
 	handleSearchNote: () => {},
 	clearSearch: () => {},
+	handleFavoriteNote: () => {},
 	handleAddCategory: () => {},
 	handleEditCategory: () => {},
 	handleDeleteCategory: () => {},

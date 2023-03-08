@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { NoteContext } from "../../context/NoteContext";
+
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 import "./Note.css";
 
 const Note = ({ note: { isFavorite, id, category, body, date }, color }) => {
+	const { handleFavoriteNote } = useContext(NoteContext);
 	const noteClass = classNames({
 		note: true,
 		[color]: true,
@@ -21,7 +25,7 @@ const Note = ({ note: { isFavorite, id, category, body, date }, color }) => {
 				<ion-icon name="expand-outline"></ion-icon>
 			</Link>
 
-			<button className="note__star-btn">
+			<button className="note__star-btn" id={id} onClick={handleFavoriteNote}>
 				<ion-icon name="star"></ion-icon>
 			</button>
 		</article>

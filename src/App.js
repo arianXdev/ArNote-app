@@ -4,10 +4,10 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory } from "./services/NoteService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory, editNote, getNote } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
-import _ from "lodash";
+import _, { defaultTo } from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -115,6 +115,19 @@ const App = () => {
 	const clearSearch = () => {
 		searchInputRef.current.value = "";
 		handleSearchNote("");
+	};
+
+	const handleFavoriteNote = async (e) => {
+		const selectedNoteId = e.target.id;
+
+		const { data: note } = await getNote(parseInt(selectedNoteId));
+		const { status } = await editNote({ ...note, isFavorite: !note.isFavorite }, parseInt(selectedNoteId));
+
+		if (status === 200) {
+			toast.success("Changed successfully");
+		}
+
+		fetchData();
 	};
 
 	const handleAddCategory = async () => {
@@ -316,6 +329,7 @@ const App = () => {
 				handleSearchNote,
 				searchInputRef,
 				clearSearch,
+				handleFavoriteNote,
 				handleEditCategory,
 				handleDeleteCategory,
 			}}
