@@ -36,7 +36,7 @@
 	background-color: var(--red-color);
 }
 
-.note.favorite::before {
+.favorites .note.favorite::before {
 	content: " ";
 	width: 50px;
 	height: 50px;
