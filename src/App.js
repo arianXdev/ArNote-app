@@ -92,10 +92,10 @@ const App = () => {
 					setCategories(categoriesData);
 
 					navigate("/notes");
-					toast.success("Deleted!");
+					toast.success("Deleted");
 				} catch (err) {
 					console.log(err.message);
-					toast.error("Couldn't delete it!");
+					toast.error("Couldn't delete it");
 				}
 			}
 		};
@@ -168,6 +168,8 @@ const App = () => {
 					setCategories((draft) => {
 						draft.push(newCategory);
 					});
+
+					toast.success("Created");
 				} else {
 					Swal.fire({
 						icon: "error",
@@ -275,7 +277,7 @@ const App = () => {
 			toast.dismiss();
 
 			if (categories.length < 2) {
-				return toast.error("There must be one category at least.");
+				return toast.error("There must be one category at least");
 			}
 
 			try {
