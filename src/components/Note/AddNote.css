@@ -54,6 +54,13 @@
 	border-radius: 50px;
 }
 
+.add__wrapper {
+	width: max-content;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .add__btn {
 	display: inline-flex;
 	justify-content: space-between;

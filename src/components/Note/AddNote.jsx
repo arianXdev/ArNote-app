@@ -73,36 +73,45 @@ const AddNote = () => {
 					}
 				></textarea>
 
-				<div className={addBtnClass} style={{ width: addBtnState ? "590px" : "110px" }} onClick={() => setAddBtnState((prevState) => !prevState)}>
-					<span className="add__btn-text">
-						Add
-						<ion-icon name="chevron-forward-outline"></ion-icon>
-					</span>
+				<div className="add__wrapper">
+					<div className={addBtnClass} style={{ width: addBtnState ? "100%" : "110px" }} onClick={() => setAddBtnState((prevState) => !prevState)}>
+						<span className="add__btn-text">
+							Add
+							<ion-icon name="chevron-forward-outline"></ion-icon>
+						</span>
 
-					<ul
-						className="add__categories"
-						style={
-							addBtnState
-								? { width: "100%", visibility: "visible", userSelect: "auto", pointerEvents: "auto", transition: "all 0.5s ease-out", transitionDelay: ".3s" }
-								: { opacity: "0", visibility: "hidden", width: "0" }
-						}
-					>
-						{categories.map((c) => (
-							<li
-								key={c.id}
-								onClick={(e) => {
-									e.stopPropagation();
-									handleAdd(c.id);
-								}}
-								style={{
-									transition: `all ${parseInt(c.id)}s ease-in`,
-								}}
-							>
-								<button className="add__categories-btn">{c.name}</button>
-								<div className={`add__bar add__bar--${c.color}`}></div>
-							</li>
-						))}
-					</ul>
+						<ul
+							className="add__categories"
+							style={
+								addBtnState
+									? {
+											width: "max-content",
+											visibility: "visible",
+											userSelect: "auto",
+											pointerEvents: "auto",
+											transition: "all 0.4s ease-out",
+											transitionDelay: ".3s",
+									  }
+									: { opacity: "0", visibility: "hidden", width: "auto" }
+							}
+						>
+							{categories.map((c) => (
+								<li
+									key={c.id}
+									onClick={(e) => {
+										e.stopPropagation();
+										handleAdd(c.id);
+									}}
+									style={{
+										transition: `all ${parseInt(c.id)}s ease-in`,
+									}}
+								>
+									<button className="add__categories-btn">{c.name}</button>
+									<div className={`add__bar add__bar--${c.color}`}></div>
+								</li>
+							))}
+						</ul>
+					</div>
 				</div>
 
 				<button className="add__delete-btn" onClick={() => navigate("/notes")}>
