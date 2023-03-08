@@ -1,22 +1,70 @@
 {
-	"notes": [
-		{
-			"body": "Hi there, This is a test note.",
-			"category": 1,
-			"isFavorite": false,
-			"date": {
-				"year": 2023,
-				"month": "March",
-				"day": 7
-			},
-			"id": 1
-		}
-	],
-	"categories": [
-		{
-			"id": 1,
-			"name": "Personal",
-			"color": "blue"
-		}
-	]
+  "notes": [
+    {
+      "body": "Hi there, This is a test note.",
+      "category": 1,
+      "isFavorite": false,
+      "date": {
+        "year": 2023,
+        "month": "March",
+        "day": 7
+      },
+      "id": 1
+    },
+    {
+      "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "category": 2,
+      "isFavorite": true,
+      "date": {
+        "year": 2023,
+        "month": "March",
+        "day": 8
+      },
+      "id": 2
+    },
+    {
+      "body": "This is a test RED note.",
+      "category": 3,
+      "isFavorite": false,
+      "date": {
+        "year": 2023,
+        "month": "March",
+        "day": 8
+      },
+      "id": 3
+    },
+    {
+      "body": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n",
+      "category": 4,
+      "isFavorite": true,
+      "date": {
+        "year": 2023,
+        "month": "March",
+        "day": 8
+      },
+      "id": 4
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Personal",
+      "color": "blue"
+    },
+    {
+      "name": "Work",
+      "color": "yellow",
+      "id": 2
+    },
+    {
+      "name": "Work",
+      "color": "red",
+      "id": 3
+    },
+    {
+      "name": "English",
+      "color": "green",
+      "id": 4
+    }
+  ]
 }

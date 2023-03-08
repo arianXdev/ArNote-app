@@ -89,8 +89,8 @@
 	color: var(--black-color);
 }
 
-.note:not(.note.favorite):hover > .note__edit-btn,
-.note:not(.note.favorite):hover > .note__star-btn {
+.note:hover > .note__edit-btn,
+.note:hover > .note__star-btn {
 	opacity: 1;
 	pointer-events: all;
 	user-select: auto;
