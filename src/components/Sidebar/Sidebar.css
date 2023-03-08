@@ -1,5 +1,5 @@
 .sidebar {
-	width: 4.5%;
+	width: 5%;
 	height: 100vh;
 	display: flex;
 	align-items: center;
@@ -23,6 +23,11 @@
 	border-radius: 30px;
 	cursor: pointer;
 	transition: all 0.2s ease-out;
+}
+
+.sidebar__item.active {
+	width: 35px;
+	height: 35px;
 }
 
 .sidebar__item.blue {

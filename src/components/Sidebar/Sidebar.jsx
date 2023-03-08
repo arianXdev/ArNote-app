@@ -1,5 +1,5 @@
 import { useContext, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { NoteContext } from "../../context/NoteContext";
 
@@ -27,19 +27,19 @@ const Sidebar = () => {
 	return (
 		<aside className="sidebar">
 			<nav className="sidebar__categories">
-				<Link to="/notes" className="sidebar__home">
+				<NavLink to="/notes" className="sidebar__home">
 					<ion-icon name="home"></ion-icon>
-				</Link>
+				</NavLink>
 
 				{categories.map((category) => (
 					<Fragment key={category.id}>
-						<Link
+						<NavLink
 							key={category.id}
 							onContextMenu={handleContextMenu}
 							className={`sidebar__item ${category.color}`}
 							id={category.id}
 							to={`/notes/category/${category.id}`}
-						></Link>
+						></NavLink>
 
 						<Menu id={MENU_ID} animation={{ enter: "scale", exit: "fade" }}>
 							<Item id="edit" onClick={handleEditCategory}>
