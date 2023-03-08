@@ -4,10 +4,10 @@ import { useImmer } from "use-immer";
 import { Search, Favorites, Notes, FAB, Sidebar } from "./components";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 
-import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory, editNote } from "./services/NoteService";
+import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
-import _, { filter } from "lodash";
+import _ from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
 import Swal from "sweetalert2";
