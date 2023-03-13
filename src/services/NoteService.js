@@ -1,7 +1,7 @@
 import axios from "axios";
 // All requests goes here
 
-const SERVER_URL = "http://localhost:9000";
+const SERVER_URL = "https://notesapi.arianh.ir";
 
 // @desc Get All Notes
 // @route GET http://localhost:9000/notes

@@ -7,7 +7,7 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { getAllNotes, getAllCategories, deleteNote, addCategory, deleteCategory, editCategory, getCategory, editNote, getNote } from "./services/NoteService";
 
 import { NoteContext } from "./context/NoteContext";
-import _, { defaultTo } from "lodash";
+import _ from "lodash";
 
 import { Toaster, toast } from "react-hot-toast";
 import Swal from "sweetalert2";
