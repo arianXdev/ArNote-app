@@ -52,8 +52,8 @@ const ViewNote = () => {
 				return toast.error(err.message);
 			}
 
-			const { data: updatedNote, status, statusText } = await editNote(note, noteId);
-			if (status === 200 && statusText === "OK") {
+			const { data: updatedNote, status } = await editNote(note, noteId);
+			if (status === 200) {
 				toast.success("Saved!");
 
 				if (updatedNote.isFavorite) {
